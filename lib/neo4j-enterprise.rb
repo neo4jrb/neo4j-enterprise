@@ -9,7 +9,8 @@ module Neo4j
 
     def self.load_jars!
       require 'java'
-      puts jars_root
+      require 'neo4j-community'
+      require 'neo4j-advanced'
       Dir["#{jars_root}/*.jar"].each {|jar| require jar }
     end
 
