@@ -5,11 +5,11 @@ require "neo4j-enterprise/version"
 Gem::Specification.new do |s|
   s.name        = "neo4j-enterprise"
   s.version     = Neo4j::Enterprise::VERSION
-  s.authors     = ["Dmytrii Nagirniak"]
-  s.email       = ["dnagir@gmail.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.authors     = ["Dmytrii Nagirniak", "Andreas Ronge"]
+  s.email       = ["dnagir@gmail.com", "andreas.ronge@gmail.com"]
+  s.homepage    = "https://github.com/dnagir/neo4j-enterprise"
+  s.summary     = "The neo4j Enterprise edition v#{Neo4j::Enterprise::NEO_VERSION} JAR files"
+  s.description = s.summary
 
   s.rubyforge_project = "neo4j-enterprise"
 
@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+
+  s.platform      = 'java'
 
   # specify any dependencies here; for example:
   # s.add_development_dependency "rspec"
