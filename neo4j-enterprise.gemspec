@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
+  s.platform = 'java'
+
   s.add_runtime_dependency "neo4j-advanced", "~> 1.6.0.alpha"
   s.add_runtime_dependency "neo4j-community" # Just making it explicit
 
