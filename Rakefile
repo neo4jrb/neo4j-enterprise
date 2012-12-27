@@ -1,5 +1,7 @@
 require "bundler/gem_tasks"
 
+# To find which jar file contains a java class
+# find tmp -name *.jar -exec bash -c "echo {} && jar tvf {} | grep StaticLoggerBinder " \;
 
 def download_folder
   abort "Please create a #{File.expand_path('tmp')} folder and copy the neo4j enterprise gz/tar file downloaded from http://neo4j.org/download" unless File.directory?('tmp')
@@ -22,8 +24,18 @@ def unpack_lib_dir
   File.expand_path("./tmp/#{dir}/lib")
 end
 
+def unpack_system_lib_dir
+  dir = tar_file.gsub('-unix.tar.gz', '')
+  dir = dir.gsub('-unix.tar', '')
+  File.expand_path("./tmp/#{dir}/system/lib")
+end
+
 def jar_files_to_copy
   Dir.new(unpack_lib_dir).entries.find_all {|x| x =~ /\.jar/}
+end
+
+def system_jar_files_to_copy
+  Dir.new(unpack_system_lib_dir).entries.find_all {|x| x =~ /\.jar/}  
 end
 
 desc "Delete old Jar files"
@@ -36,7 +48,8 @@ task :delete_old_jar do
 end
 
 def include_jar?(file)
-  include_only = %w[log4j neo4j-backup neo4j-com neo4j-enterprise neo4j-ha org.apache.servicemix.bundles.netty slf4j zookeeper]
+return true
+  include_only = %w[server-api neo4j-udc neo4j-consistency-check log4j logback-core zookeeper logback-classic neo4j-cluster netty neo4j-backup neo4j-com neo4j-enterprise neo4j-ha org.apache.servicemix.bundles.netty slf4j]
   include_only.each do |i|
     return true if file.start_with?(i) 
   end
@@ -51,6 +64,12 @@ task :upgrade => [:delete_old_jar] do
   jar_files_to_copy.each do |f| 
     next unless include_jar?(f)
     system "cp #{unpack_lib_dir}/#{f} #{jars}/"
+    system "git add -f #{jars}/#{f}"
+  end
+
+  system_jar_files_to_copy.each do |f| 
+    next unless include_jar?(f)
+    system "cp #{unpack_system_lib_dir}/#{f} #{jars}/"
     system "git add -f #{jars}/#{f}"
   end
 end
