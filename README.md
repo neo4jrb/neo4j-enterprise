@@ -18,6 +18,7 @@ How to Release
 6. cp ~/Download/neo4j-enterprise-VERSION to tmp
 7. rake upgrade
 8. edit the lib/neo4j-enterprise/version file
+9. rake build
 
 There should now be a gem file available in the pkg folder. 
   gem install pkg/neo4j-enterprise-VERSION-java.gem  
