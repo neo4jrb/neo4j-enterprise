@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Neo4j::Enterprise::VERSION
   s.authors     = ["Dmytrii Nagirniak", "Andreas Ronge", "Volker Pacher"]
   s.email       = ["dnagir@gmail.com", "andreas.ronge@gmail.com", "volker.pacher@gmail.com"]
-  s.homepage    = "https://github.com/dnagir/neo4j-enterprise"
+  s.homepage    = "https://github.com/neo4jrb/neo4j-enterprise"
   s.summary     = "The neo4j Enterprise edition v#{Neo4j::Enterprise::NEO_VERSION} JAR files"
   s.description = "The Neo4j Enterprise Jar files, adding online backup and High Availability clustering – licensed under AGPL, see http://neo4j.org/licensing-guide/"
 
