@@ -5,8 +5,8 @@ require "neo4j-enterprise/version"
 Gem::Specification.new do |s|
   s.name        = "neo4j-enterprise"
   s.version     = Neo4j::Enterprise::VERSION
-  s.authors     = ["Dmytrii Nagirniak", "Andreas Ronge"]
-  s.email       = ["dnagir@gmail.com", "andreas.ronge@gmail.com"]
+  s.authors     = ["Dmytrii Nagirniak", "Andreas Ronge", "Volker Pacher"]
+  s.email       = ["dnagir@gmail.com", "andreas.ronge@gmail.com", "volker.pacher@gmail.com"]
   s.homepage    = "https://github.com/dnagir/neo4j-enterprise"
   s.summary     = "The neo4j Enterprise edition v#{Neo4j::Enterprise::NEO_VERSION} JAR files"
   s.description = "The Neo4j Enterprise Jar files, adding online backup and High Availability clustering – licensed under AGPL, see http://neo4j.org/licensing-guide/"
@@ -23,5 +23,5 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   s.add_development_dependency "rake"
   s.add_development_dependency "jeweler"
-  # s.add_runtime_dependency "rest-client"
+  # s.add_runtime_dependency "neo4j-community"
 end
