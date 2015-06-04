@@ -48,7 +48,17 @@ task :delete_old_jar do
 end
 
 def include_jar?(file)
-  include_only = %w[server-api neo4j-udc neo4j-consistency-check log4j logback-core zookeeper logback-classic neo4j-cluster netty neo4j-backup neo4j-com neo4j-enterprise neo4j-ha org.apache.servicemix.bundles.netty slf4j]
+  include_only = %w[
+                      concurrentlinkedhashmap-lru
+                      log4j logback-classic logback-core
+                      lucene-core
+                      neo4j-backup neo4j-cluster neo4j-com neo4j-consistency-check neo4j-csv
+                      neo4j-cypher neo4j-cypher-compiler-1.9-2.0.4 neo4j-cypher-compiler
+                      neo4j-graph-algo neo4j-graph-matching
+                      neo4j-ha neo4j-import-tool neo4j-io neo4j-jmx neo4j-kernel neo4j-lucene-index
+                      neo4j-management neo4j-primitive-collections neo4j-udc neo4j-unsafe
+                      netty opencsv parboiled scala-library server-api slf4j
+                  ]
   include_only.each do |i|
     return true if file.start_with?(i) 
   end
